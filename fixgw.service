@@ -1,0 +1,11 @@
+[Unit]
+Description=FIX Gateway
+After=multi-user.target
+
+[Service]
+ExecStart=python3 -u fixgw.py --config-file fixgw/config/default.yaml
+WorkingDirectory=/home/pi/labs/makerplane/fixgw
+User=pi
+
+[Install]
+WantedBy=multi-user.target
