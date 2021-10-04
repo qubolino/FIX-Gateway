@@ -186,6 +186,30 @@ connections:
 
       - key: OAT
 
+      
+  i2c_airspeed:
+    load: yes
+    module: fixgw.plugins.i2c_airspeed
+
+  i2c_altitude:
+    load: yes
+    module: fixgw.plugins.i2c_altitude
+
+  i2c_attitude:
+    load: yes
+    module: fixgw.plugins.i2c_attitude
+
+  i2c_gps:
+    load: no
+    module: fixgw.plugins.i2c_gps
+
+  db_persister:
+    load: no
+    module: fixgw.plugins.db_persister
+    db_schema: "database.yaml"
+    h5f_file: "../data/db_histo.h5"
+    # entries_regex: (GS|IAS|ALT|BARO|HEAD|TRACK|COURSE|PITCH|ROLL|YAW|AOA|ALAT|ALONG|LAT|LONG|TIMEZH|TIMEZM|TIMEZS)
+    entries_regex: ^(GS|LAT|LONG|TIMEZH|TIMEZM|TIMEZS|YAW|PITCH|ROLL|ALT|ALAT|ALONG|BARO)$
 
   test1:
     load: no
@@ -304,7 +328,7 @@ connections:
     model: 2004
 
   stratux:
-    load: yes
+    load: no
     module: fixgw.plugins.stratux
 
 # Logging configuration - See Python logging.config module documenation
@@ -314,8 +338,8 @@ logging:
   loggers:
     '':
       # messages with levels below the one given will not be logged
-      #level: DEBUG
-      #level: INFO
+      # level: DEBUG
+      # level: INFO
       level: WARNING
       #level: ERROR
       #level: CRITICAL
